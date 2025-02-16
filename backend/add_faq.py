@@ -1,13 +1,11 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-# Initialize Firebase
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 def add_faq(question, answer):
-    """Adds an FAQ entry to Firebase."""
     faq_ref = db.collection('faqs').document()
     faq_ref.set({
         "question": question,

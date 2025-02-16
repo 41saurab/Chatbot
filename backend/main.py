@@ -21,12 +21,10 @@ app.add_middleware(
 )
 
 class Question(BaseModel):
-    """Pydantic model for the question input."""
     text: str
 
 @app.post("/ask")
 async def ask_question(question: Question):
-    """Handle the question asked by the user and return an answer."""
     try:
         query = question.text.strip().lower()
         docs = db.collection('faqs').where('question_lower', '==', query).get()
