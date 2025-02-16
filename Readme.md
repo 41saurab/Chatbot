@@ -7,5 +7,5 @@
 
 # frontend:
  - Install packages: axios and tailwindcss
- - npm run dev
+ - Start: npm run dev
 
