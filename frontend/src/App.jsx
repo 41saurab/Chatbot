@@ -64,7 +64,7 @@ const App = () => {
         <div className="bg-gray-50 flex h-screen">
             <div className="w-full h-full bg-white flex flex-col">
                 <div className="bg-[#0096FF] text-white p-4 shrink-0">
-                    <h1 className="text-xl font-semibold">Gemini AI Chatbot</h1>
+                    <h1 className="text-xl font-semibold">Gemini AI</h1>
                 </div>
                 <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hidden">
                     {messages.map((msg, index) => (
