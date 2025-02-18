@@ -1,4 +1,5 @@
-import openai
+# import openai
+import google.generativeai as genai
 import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,7 +11,10 @@ load_dotenv()
 
 app = FastAPI(docs_url="/")
 db = initialize_firebase() 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# openai.api_key = os.getenv("OPENAI_API_KEY")
+
+genai.configure(api_key=os.getenv("GEMINIAI_API_KEY"))
 
 
 app.add_middleware(
@@ -35,14 +39,24 @@ async def ask_question(question: Question):
                 "source": "faq"
             }
 
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": question.text}]
-        )
+        #  for openai 
+        # response = openai.ChatCompletion.create(
+        #     model="gpt-3.5-turbo",
+        #     messages=[{"role": "user", "content": question.text}]
+        # )
+
+        # return {
+        #     "answer": response.choices[0].message['content'],
+        #     "source": "gpt-3.5-turbo"
+        # }
+
+        #  for gemini 
+        model = genai.GenerativeModel("gemini-pro")
+        response = model.generate_content(question.text)
 
         return {
-            "answer": response.choices[0].message['content'],
-            "source": "gpt-3.5-turbo"
+            "answer": response.text,
+            "source": "gemini-pro"
         }
 
     except Exception as e:

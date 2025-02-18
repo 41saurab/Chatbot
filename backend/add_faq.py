@@ -17,6 +17,7 @@ def add_faq(question, answer):
 if __name__ == "__main__":
     faqs = [
         {"question": "What is your name?", "answer": "I have no name. Please name me."},
+        {"question": "What is your age?", "answer": "I don't have age."},
     ]
 
     for faq in faqs:

@@ -1,8 +1,8 @@
 # backend:
- - Install dependencies: pip install fastapi uvicorn python-dotenv firebase-admin openai
- - Set up Firebase and OpenAI
+ - Install dependencies: pip install fastapi uvicorn python-dotenv firebase-admin google-generativeai
+ - Set up Firebase and gemini
  - Add the "serviceAccountKey.json" file for Firebase authentication
- - Run the script to add FAQs: "python add_faq.py"
+ - To add FAQs run the script: "python add_faq.py"
  - Start the FastAPI server: "uvicorn main:app --reload"
 
 # frontend:
